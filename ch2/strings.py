@@ -1,19 +1,21 @@
 # coding: utf-8
-"""strings in single and double quotes"""
+single_quoted_string = 'data science'
+double_quoted_string = "data science"
 tab_string = "\t"
+tab_string
 len(tab_string)
-len("t")
-r"\t"
-len(r"\t")
-multi_line_string = """This is the first line.
-and the second line...
-and the third line before closing"""
-multi_line_string
+not_tab_string = r"\t"
+len(not_tab_string)
+n_string = "\n"
+len(n_string)
+raw_n_string = r"\n"
+len(raw_n_string)
 first_name = "Paul"
 last_name = "Apivat"
-full_name_f_string = f"{first_name} {last_name}"
-full_name_f_string
-"""string.format"""
-full_name_string_format = "{0} {1}".format(first_name, last_name)
-full_name_string_format
-get_ipython().run_line_magic('save', 'strings 58-73')
+string_addition = first_name + " " + last_name
+string_addition
+string_format = "{0} {1}".format(first_name, last_name)
+string_format
+f_string = f"{first_name} {last_name}"
+f_string
+get_ipython().run_line_magic('save', 'strings 2-3 5-22')
