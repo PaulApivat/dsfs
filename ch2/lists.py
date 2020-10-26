@@ -25,7 +25,7 @@ first_three
 one_to_four = x[1:5]
 one_to_four
 last_three = x[-3:]
-last_three
+last_thr
 without_first_and_last = x[1:-1]
 without_first_and_last
 copy_of_x = x[:]
