@@ -1,6 +1,5 @@
 # coding: utf-8
-get_ipython().run_line_magic('run', 'friendship_network.py')
-friendships
+
 """find total number of connections, sum length of all friends lists"""
 def number_of_friends(user):
     """How many friends does _user_ have?"""
