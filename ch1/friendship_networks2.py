@@ -148,3 +148,15 @@ average_salary_by_bucket = {
     }
 average_salary_by_bucket
 get_ipython().run_line_magic('save', 'friendship_networks2.py 1-73')
+interests
+"""one way to guage popularity of an interest is to count the words"""
+"""First, lowercase each interest. Second, split into words. Third, count the results"""
+words_and_counts = Counter(word
+                           for user, interest in interests
+                           for word in interest.lower().split())
+words_and_counts
+for word, count in words_and_counts.most_common():
+    if count > 1:
+        print(word, count)
+        
+get_ipython().run_line_magic('save', 'friendship_networks2.py 1-80')
