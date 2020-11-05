@@ -36,3 +36,31 @@ ax.set_ylabel('Billions of $')
 fig.tight_layout()
 fig.show()
 
+# ---- scatter plot ---- #
+years = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
+gdp = [300.2, 543.3, 1075.9, 2862.5, 5979.6, 10289.7, 14958.3]
+
+fig, ax = plt.subplots(figsize=(5,3))
+ax.scatter(x=years, y=gdp, marker='o', c='blue', edgecolor='orange')
+ax.set_title('Nominal GDP (Scatter: Year & GDP)')
+ax.legend(loc='upper left')
+ax.set_ylabel('Billions of $')
+fig.tight_layout()
+fig.show()
+
+##########
+# movies #
+##########
+
+#---- Horizontal Bar Chart ----#
+
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+
+fig, ax = plt.subplots(figsize=(5,3))
+ax.barh(movies, num_oscars, color='purple')
+ax.set_title('Favorite Movies: Horizontal Bar Chart')
+ax.set_xlabel('# of Academy Awards')
+fig.tight_layout()
+fig.show()
+
