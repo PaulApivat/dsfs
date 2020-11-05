@@ -64,3 +64,35 @@ ax.set_xlabel('# of Academy Awards')
 fig.tight_layout()
 fig.show()
 
+#---- Step Plot ----#
+
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+
+fig, ax = plt.subplots(figsize=(5,3))
+ax.step(movies, num_oscars)
+ax.set_title('Favorite Movies: Step Plot')
+ax.set_xlabel('# of Academy Awards')
+fig.tight_layout()
+fig.show()
+
+#---- Stem Plot ----#
+
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+plt.stem(movies, num_oscars)
+plt.title("My Favorite Movies")
+plt.ylabel("# of Academy Awards")
+plt.xticks(range(len(movies)), movies)
+plt.show()
+
+# ---- Plot Vertical Lines (confusing)----#
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+plt.vlines(movies, num_oscars, ymax=15)
+plt.title("My Favorite Movies")
+plt.ylabel("# of Academy Awards")
+plt.xticks(range(len(movies)), movies)
+plt.show()
+
+
