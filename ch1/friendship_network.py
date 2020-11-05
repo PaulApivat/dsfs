@@ -96,13 +96,23 @@ def data_scientists_who_like(target_interest):
             if user_interest == target_interest]
             
 data_scientists_who_like("Python")
+
+def num_user_with_interest_in(target_interest):
+    interest_count = 0
+    for user_id, user_interest in interests:
+        if user_interest == target_interest:
+            interest_count += 1
+    return interest_count
+
+
+
 """build an index from interests to users"""
 from collections import defaultdict
 """keys are interests, values are lists of user_ids with that interests"""
-for user_id, interest in interests:
-    user_ids_by_interest[interest].append(user_id)
+
     
 user_ids_by_interest = defaultdict(list)
+
 for user_id, interest in interests:
     user_ids_by_interest[interest].append(user_id)
     
@@ -122,10 +132,7 @@ def most_common_interests_with(user):
         if interested_user_id != user["id"]
         )
         
-most_common_interests_with["Hero"]
-most_common_interests_with[0]
-user
-users
+
 salaries_and_tenures = [(83000, 8.7), (88000, 8.1),
                         (48000, 0.7), (76000, 6),
                         (69000, 6.5), (76000, 7.5),
@@ -170,7 +177,8 @@ average_salary_by_bucket = {
     for tenure_bucket, salaries in salary_by_tenure_bucket.items()
     }
 average_salary_by_bucket
-get_ipython().run_line_magic('save', 'friendship_networks2.py 1-73')
+
+
 interests
 """one way to guage popularity of an interest is to count the words"""
 """First, lowercase each interest. Second, split into words. Third, count the results"""
