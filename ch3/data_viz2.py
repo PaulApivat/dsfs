@@ -130,3 +130,22 @@ plt.xticks(range(len(movies)), movies)
 plt.show()
 
 
+# ----------- fig, ax version of Line Charts ------------ #
+
+variance = [1,2,4,8,16,32,64,128,256]
+bias_squared = [256, 128, 64, 32, 16, 8, 4, 2, 1]
+total_error = [x + y for x,y in zip(variance, bias_squared)]
+xs = [i for i, _ in enumerate(variance)]
+
+fig, ax = plt.subplots(figsize=(8,5))
+ax.plot(xs, variance, 'g-', label='variance')
+ax.plot(xs, bias_squared, 'r-', label='bias^2')
+ax.plot(xs, total_error, 'b:', label='total error')
+ax.legend(loc='upper center')
+ax.set_xlabel("model complexity")
+ax.set_title("The Bias-Variance Tradeoff: Alt Version")
+fig.tight_layout()
+fig.show()
+
+
+
