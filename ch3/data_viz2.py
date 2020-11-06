@@ -1,6 +1,8 @@
 from matplotlib import pyplot as plt
 
 # ---- stackplot ---- #
+
+## fig, ax 
 years = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
 gdp = [300.2, 543.3, 1075.9, 2862.5, 5979.6, 10289.7, 14958.3]
 
@@ -11,6 +13,17 @@ ax.legend(loc='upper left')
 ax.set_ylabel('Billions of $')
 fig.tight_layout()
 fig.show()
+
+## plt
+years = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
+gdp = [300.2, 543.3, 1075.9, 2862.5, 5979.6, 10289.7, 14958.3]
+plt.stackplot(years, gdp, color="green")
+plt.title("Nominal GDP")
+plt.ylabel("Billions of $")
+plt.xlabel("Years")
+plt.show()
+
+
 
 # ---- line ---- #
 years = [1950, 1960, 1970, 1980, 1990, 2000, 2010]
@@ -51,6 +64,27 @@ fig.show()
 ##########
 # movies #
 ##########
+
+#---- Original Bar Chart ----#
+
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+
+plt.bar(range(len(movies)), num_oscars)
+plt.title("My Favorite Movies")
+plt.ylabel("# of Academy Awards")
+plt.xticks(range(len(movies)), movies)
+plt.show()
+
+# ---- Stem Chart ---- #
+
+movies = ["Annie Hall", "Ben-Hur", "Casablanca", "Gandhi", "West Side Story"]
+num_oscars = [5,11,3,8,10]
+plt.stem(range(len(movies)), num_oscars)
+plt.title("My Favorite Movies")
+plt.ylabel("# of Academy Awards")
+plt.xticks(range(len(movies)), movies)
+plt.show()
 
 #---- Horizontal Bar Chart ----#
 
