@@ -1,0 +1,50 @@
+,id,name,f1,f2,f3,num_friends,topic
+0,0,Hero,1,2.0,,2,Hadoop
+1,0,Hero,1,2.0,,2,Big Data
+2,0,Hero,1,2.0,,2,HBase
+3,0,Hero,1,2.0,,2,Java
+4,0,Hero,1,2.0,,2,Spark
+5,0,Hero,1,2.0,,2,Storm
+6,0,Hero,1,2.0,,2,Cassandra
+7,1,Dunn,0,2.0,3.0,3,NoSQL
+8,1,Dunn,0,2.0,3.0,3,MongoDB
+9,1,Dunn,0,2.0,3.0,3,Cassandra
+10,1,Dunn,0,2.0,3.0,3,HBase
+11,1,Dunn,0,2.0,3.0,3,Postgres
+12,2,Sue,0,1.0,3.0,3,Python
+13,2,Sue,0,1.0,3.0,3,scikit-learn
+14,2,Sue,0,1.0,3.0,3,scipy
+15,2,Sue,0,1.0,3.0,3,numpy
+16,2,Sue,0,1.0,3.0,3,statsmodels
+17,2,Sue,0,1.0,3.0,3,pandas
+18,3,Chi,1,2.0,4.0,3,R
+19,3,Chi,1,2.0,4.0,3,Python
+20,3,Chi,1,2.0,4.0,3,statistics
+21,3,Chi,1,2.0,4.0,3,regression
+22,3,Chi,1,2.0,4.0,3,probability
+23,4,Thor,3,5.0,,2,machine learning
+24,4,Thor,3,5.0,,2,regression
+25,4,Thor,3,5.0,,2,decision trees
+26,4,Thor,3,5.0,,2,libsvm
+27,5,Clive,4,6.0,7.0,3,Python
+28,5,Clive,4,6.0,7.0,3,R
+29,5,Clive,4,6.0,7.0,3,Java
+30,5,Clive,4,6.0,7.0,3,C++
+31,5,Clive,4,6.0,7.0,3,Haskell
+32,5,Clive,4,6.0,7.0,3,programming langauges
+33,6,Hicks,5,8.0,,2,statistics
+34,6,Hicks,5,8.0,,2,probability
+35,6,Hicks,5,8.0,,2,mathematics
+36,6,Hicks,5,8.0,,2,theory
+37,7,Devin,5,8.0,,2,machine learning
+38,7,Devin,5,8.0,,2,scikit-learn
+39,7,Devin,5,8.0,,2,Mahout
+40,7,Devin,5,8.0,,2,neural networks
+41,8,Kate,6,7.0,9.0,3,neural networks
+42,8,Kate,6,7.0,9.0,3,deep learning
+43,8,Kate,6,7.0,9.0,3,Big Data
+44,8,Kate,6,7.0,9.0,3,artificial intelligence
+45,9,Klein,8,,,1,Hadoop
+46,9,Klein,8,,,1,Java
+47,9,Klein,8,,,1,MapReduce
+48,9,Klein,8,,,1,Big Data
