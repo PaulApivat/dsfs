@@ -87,16 +87,10 @@ def squared_distance(v: Vector, w: Vector) -> float:
     """Computes (v_1 - w_1) ** 2 + ... + (v_n - w_n) ** 2"""
     return sum_of_squares(subtract(v,w))
     
-def distance(v: Vector, w: Vector) -> float:
-    """Computes the distance between v and w"""
-    return math.sqrt(squared_distance(v,w))
-    
-distance([3,4], [5,6])
-
 
 def distance(v: Vector, w: Vector) -> float:
     """Also computes the distance between v and w"""
     return magnitude(subtract(v,w))
     
-distance([3,4], [5,6])
+distance([3,4], [5,6])  # 2.8284271247461903
 
