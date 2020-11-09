@@ -32,11 +32,6 @@ def vector_sum(vectors: List[Vector]) -> Vector:
     """Sum all corresponding elements (componentwise sum)"""
     # Check that vectors is not empty
     assert vectors, "no vectors provided!"
-    
-def vector_sum(vectors: List[Vector]) -> Vector:
-    """Sum all corresponding elements (componentwise sum)"""
-    # Check that vectors is not empty
-    assert vectors, "no vectors provided!"
     # Check the vectorss are all the same size
     num_elements = len(vectors[0])
     assert all(len(v) == num_elements for v in vectors), "different sizes!"
