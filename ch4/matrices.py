@@ -20,10 +20,6 @@ def shape(A: Matrix) -> Tuple[int, int]:
     return num_rows, num_cols
     
 assert shape([[1,2,3], [4,5,6]]) == (2,3) # 2 rows, 3 columns
-
-def get_row(A: Matrix, i: int) -> Vector:
-    """Returns the i-th row of A (as a Vector)"""
-    return A[i]  # A[i] is already the ith row
     
 Vector = List[float]
 
