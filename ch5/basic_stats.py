@@ -193,3 +193,23 @@ daily_hours_good = [dm / 60 for dm in daily_minutes_good]
 assert 0.57 < correlation(num_friends_good, daily_minutes_good) < 0.58
 assert 0.57 < correlation(num_friends_good, daily_hours_good) < 0.58
 
+
+# with outlier
+
+plt.scatter(num_friends, daily_minutes)
+plt.axis([0, 101, 0, 101])
+plt.title("Correlation Before Removing the Outlier")
+plt.xlabel("# of friends")
+plt.ylabel("minutes per day")
+plt.show()
+
+
+# remove outlier
+
+plt.scatter(num_friends_good, daily_minutes_good)
+plt.axis([0, 101, 0, 60])
+plt.title("Correlation After Removing the Outlier")
+plt.xlabel("# of friends")
+plt.ylabel("minutes per day")
+plt.show()
+
