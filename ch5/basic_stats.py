@@ -207,7 +207,7 @@ plt.show()
 # remove outlier
 
 plt.scatter(num_friends_good, daily_minutes_good)
-plt.axis([0, 101, 0, 60])
+plt.axis([0, 60, 0, 101])
 plt.title("Correlation After Removing the Outlier")
 plt.xlabel("# of friends")
 plt.ylabel("minutes per day")
