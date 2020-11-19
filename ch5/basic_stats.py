@@ -176,3 +176,20 @@ def correlation(xs: List[float], ys: List[float]) -> float:
 
 assert 0.24 < correlation(num_friends, daily_minutes) < 0.25
 assert 0.24 < correlation(num_friends, daily_hours) < 0.25
+
+# correlations are sensitive to outliers
+
+# find index of person with 100 friends - assign to outlier
+outlier = num_friends.index(100)
+
+# remove outlier from num_friends, call it num_friends_good
+num_friends_good = [x for i, x in enumerate(num_friends) if i != outlier]
+
+# remove corresponding outlier index daily minutes and daily daily_hours
+daily_minutes_good = [x for i, x in enumerate(daily_minutes) if i != outlier]
+daily_hours_good = [dm / 60 for dm in daily_minutes_good]
+
+# assert higher correlation once outlier remove
+assert 0.57 < correlation(num_friends_good, daily_minutes_good) < 0.58
+assert 0.57 < correlation(num_friends_good, daily_hours_good) < 0.58
+
