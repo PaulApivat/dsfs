@@ -1,20 +1,18 @@
 # coding: utf-8
 from random import random, seed
 seed(0)
-
 pop = 20000000 # 20M people
 counts = {}
-
 for i in range(pop):
-    has_covid = i % 5000 == 0 # one in 5,000 people have covid
-    # assuming that every person gets tested regardless of any symptoms
+    has_covid = i % 10000 == 0 # one in 10,000 people have covid
+    # assuming that every person gets tested regardless of any symptoms (unrealistic)
     if has_covid:
         tests_positive = True
-        if random() < 0.15: # random coin flip creates 15% false negative
+        if random() < 0.01: # random coin flip creates 1% false negative (also unreal)
             tests_positive = False
     else:
         tests_positive = False
-        if random() < 0.05: # random coin flip creates 5% false positive
+        if random() < 0.01: # random coin flip creates 1% false positive (unrealistic)
             tests_positive = True
     outcome = (has_covid, tests_positive)
     counts[outcome] = counts.get(outcome, 0) + 1
