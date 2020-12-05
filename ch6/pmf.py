@@ -30,9 +30,16 @@ print('probability that a test-positive person actually has covid: %.2f' %
       (100.0 * counts[(True, True)] / n_positive),)
 
 
+# probability mass function
+
 df = pd.DataFrame.from_dict(counts, orient='index')
-df.rename(columns={0: 'item_counts'})
+df = df.rename(columns={0: 'item_counts'})
 df['probability'] = df['item_counts']/1000
 df['item2'] = ['TT', 'FF', 'FT', 'TF']
 plt.bar(df['item2'], df['probability'])
+plt.show()
+
+df['cumsum'] = df['item_counts'].cumsum()
+df['probability2'] = df['cumsum']/1000
+plt.bar(df['item2'], df['probability2'])
 plt.show()

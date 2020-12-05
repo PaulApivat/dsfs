@@ -1,0 +1,5 @@
+,item_counts,probability,item2
+"(True, True)",85,0.085,TT
+"(False, False)",793,0.793,FF
+"(False, True)",107,0.107,FT
+"(True, False)",15,0.015,TF
