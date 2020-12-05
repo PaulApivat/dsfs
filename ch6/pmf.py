@@ -2,6 +2,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from random import random, seed
+
 seed(0)
 pop = 1000  # 1000 people
 counts = {}
