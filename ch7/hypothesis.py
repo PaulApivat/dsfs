@@ -173,3 +173,19 @@ upper_p_value(524.5, mu_0, sigma_0)
 upper_p_value(526.5, mu_0, sigma_0)
 
 # and we would reject the Null
+# Third Approach - CONFIDENCE INTERVAL
+p_hat = 525 / 1000
+mu = p_hat
+sigma = math.sqrt(p_hat * (1 - p_hat) / 1000)  # 0.0158
+
+normal_two_sided_bounds(0.95, mu, sigma)
+# We are 95% confident that the follow interval [0.4940, 0.5560] contains the true parameter p
+
+# This is a statement about the interval, not about p. The confidence interval is interpreted as: If you repeat the experiment many times, 95% of the time, the 'true' parameter (which is the same every time) would lie within the observed confidence interval (which might be different every time).
+# In particular, we do NOT conclude the coin is unfair, since 0.5 falls within our confidence interval.
+# Here's another case with 540 heads
+p_hat = 540 / 1000
+mu = p_hat
+sigma = math.sqrt(p_hat * (1 - p_hat) / 1000)   # 0.0158
+
+normal_two_sided_bounds(0.95, mu, sigma)  # [0.5091, 0.5709]
