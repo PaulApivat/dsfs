@@ -161,3 +161,15 @@ for _ in range(1000):
 assert 59 < extreme_value_count < 65, f"{extreme_value_count}"
 extreme_value_count
 two_sided_p_values(531.5, mu_0, sigma_0)
+
+upper_p_value = normal_probability_above
+
+lower_p_value = normal_probability_below
+
+# For one-sided test, if we saw 525 heads we would compete - # 0.061
+upper_p_value(524.5, mu_0, sigma_0)
+
+# if we saw 527 heads the computation would be - # 0.047
+upper_p_value(526.5, mu_0, sigma_0)
+
+# and we would reject the Null
