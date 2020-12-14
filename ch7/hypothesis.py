@@ -1,4 +1,5 @@
 # coding: utf-8
+import random
 from typing import Tuple
 import math
 
@@ -127,4 +128,36 @@ hi = normal_upper_bound(0.95, mu_0, sigma_0)
 type_2_probability = normal_probability_below(hi, mu_1, sigma_1)
 power = 1 - type_2_probability
 
-power
+# p-values
+
+
+def two_sided_p_values(x: float, mu: float = 0, sigma: float = 1) -> float:
+    """
+    How likely are we to see a value at least as extreme as x (in either
+    direction) if our values are from an N(mu, sigma)?
+    """
+    if x >= mu:
+        # x is greater than the mean, so the tail is everything greater than x
+        return 2 * normal_probability_above(x, mu, sigma)
+    else:
+        # x is less than the mean, so the tail is everything less than x
+        return 2 * normal_probability_below(x, mu, sigma)
+
+
+two_sided_p_values(529.5, mu_0, sigma_0)
+
+# Continuity correction - adding/subtracting 0.5 to discrete distribution when approximated by a continuous distribution. For example, using 529.5 rather than 530
+# try simulation to see how sensible the estimate is
+
+extreme_value_count = 0
+
+for _ in range(1000):
+    num_heads = sum(1 if random.random() < 0.5 else 0
+                    for _ in range(1000))
+    if num_heads >= 530 or num_heads <= 470:
+        extreme_value_count += 1
+
+# p-value was 0.062 => ~62 extreme values out of 1000
+assert 59 < extreme_value_count < 65, f"{extreme_value_count}"
+extreme_value_count
+two_sided_p_values(531.5, mu_0, sigma_0)
