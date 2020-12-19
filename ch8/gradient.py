@@ -134,3 +134,74 @@ def distance(v: Vector, w: Vector) -> float:
 
 
 assert distance(v, [0, 0, 0]) < 0.001  # v should be close to 0
+
+# Using Gradient Descent to Fit Models
+
+# x ranges from -50 to 49, y is always 20 * x + 5
+inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
+
+# in this case we *know* the parameters of the linear relationship between x and y, but imagine we'd like to learn from the data.
+# we'll use gradient descent to find the slope and intercept that minimize the average squared error.
+# start with a function that determines the gradient based on the error from a single data point
+
+
+def linear_gradient(x: float, y: float, theta: Vector) -> Vector:
+    slope, intercept = theta
+    predicted = slope * x + intercept   # model prediction
+    error = (predicted - y)             # error is (predicted - actual)
+    squared_error = error ** 2          # minimize squared error
+    grad = [2 * error * x, 2 * error]   # using its gradient
+    return grad
+
+# the above is for a single data point
+# for a whole dataset, we'll use mean squared error
+# here's the process:
+# 1. start with a random value for theta
+# 2. compute the mean of the gradients
+# 3. adjust theta in that direction
+# 4. repeat
+# after many epochs - pass through dataset - we should learn correct parameters
+
+
+def vector_sum(vectors: List[Vector]) -> Vector:
+    """Sum all corresponding elements (componentwise sum)"""
+    # Check that vectors is not empty
+    assert vectors, "no vectors provided!"
+    # Check the vectorss are all the same size
+    num_elements = len(vectors[0])
+    assert all(len(v) == num_elements for v in vectors), "different sizes!"
+    # the i-th element of the result is the sum of every vector[i]
+    return [sum(vector[i] for vector in vectors)
+            for i in range(num_elements)]
+
+
+assert vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]]) == [16, 20]
+
+
+def vector_mean(vectors: List[Vector]) -> Vector:
+    """Computes the element-wise average"""
+    n = len(vectors)
+    return scalar_multiply(1/n, vector_sum(vectors))
+
+
+assert vector_mean([[1, 2], [3, 4], [5, 6]]) == [3, 4]
+
+
+# (after import vector_sum and vector_mean)
+# Start with random values for slope and intercept
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+learning_rate = 0.001
+
+for epoch in range(5000):
+    # compute the mean of the gradients
+    grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
+    # take a step in that direction
+    theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+
+assert 19.9 < slope < 20.1,  "slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
