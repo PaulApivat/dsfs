@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from typing import TypeVar, List, Iterator
 import math
 import random
 import matplotlib.pyplot as plt
@@ -205,3 +206,57 @@ slope, intercept = theta
 
 assert 19.9 < slope < 20.1,  "slope should be about 20"
 assert 4.9 < intercept < 5.1, "intercept should be about 5"
+
+# Minibatch and Stochastic Gradient Descent
+
+# Minibatch
+# instead of evaluating gradients on the entire data set before making a step,
+# we'll want more frequent steps (enter minibatch gradient descent)
+
+T = TypeVar('T')  # this allows us to type "generic" functions
+
+
+def minibatches(dataset: List[T],
+                batch_size: int,
+                shuffle: bool = True) -> Iterator[List[T]]:
+    """Generates 'batch_size'-sized minibatches from the dataset"""
+    # start indexes 0, batch_size, 2 * batch_size,...
+    batch_starts = [start for start in range(0, len(dataset), batch_size)]
+    if shuffle:
+        random.shuffle(batch_starts)  # shuffle the batches
+    for start in batch_starts:
+        end = start + batch_size
+        yield dataset[start:end]
+
+
+inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+
+for epoch in range(1000):
+    for batch in minibatches(inputs, batch_size=20):
+        grad = vector_mean([linear_gradient(x, y, theta) for x, y in batch])
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+
+assert 19.9 < slope < 20.1, "slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
+
+print("minibatch gradient descent")
+
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+for epoch in range(100):
+    for x, y in inputs:
+        grad = linear_gradient(x, y, theta)
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+assert 19.9 < slope < 20.1, "slope should be about 20"
+assert 4.9 < intercept < 5.1, "intercept should be about 5"
+
+print("stochastic gradient descent")
