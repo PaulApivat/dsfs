@@ -7,6 +7,9 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import time
 
+# Source: https://dzone.com/articles/gradient-descent-vs-normal-equation-for-regression
+# Author: Pushkara Sharma
+
 # read data
 df = pd.read_csv('student.csv')
 print(df.shape)
