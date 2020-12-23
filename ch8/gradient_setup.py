@@ -1,4 +1,5 @@
 # coding: utf-8
+from sklearn.linear_model import LinearRegression
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -30,3 +31,38 @@ plt.plot(X_new, y_predict, "r-")
 plt.plot(X, y, "b.")
 plt.axis([0, 2, 0, 15])
 plt.show()
+
+##### Linear Regression #####
+
+lin_reg = LinearRegression()
+lin_reg.fit(X, y)
+
+# (array([4.09919549]), array([[2.88887807]]))
+lin_reg.intercept_, lin_reg.coef_
+
+# array([[4.09919549], [9.87695162]])
+lin_reg.predict(X_new)
+
+theta_best_svd, residuals, rank, s = np.linalg.lstsq(X_b, y, rcond=1e-6)
+
+# array([[4.09919549], [2.88887807]])
+theta_best_svd
+
+# array([[4.09919549], [2.88887807]])
+np.linalg.pinv(X_b).dot(y)
+
+##### See if Gradient Descent yields same result as Normal Equation #####
+
+eta = 0.1  # learning rate
+n_iterations = 1000
+m = 100
+
+theta = np.random.randn(2, 1)  # random initialization
+
+for iteration in range(n_iterations):
+    gradients = 2/m * X_b.T.dot(X_b.dot(theta) - y)
+    theta = theta - eta * gradients
+
+# array([[4.09919549], [2.88887807]])
+# Same as Normal Equation
+theta
