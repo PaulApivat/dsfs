@@ -47,8 +47,31 @@ def gradient_descent(X, Y, Q, epochs, alpha):
     return cost_history, Q
 
 
+# Gradient Descent Time: 73.5403220653534
 start = time.time()
 cost_his, parameters = gradient_descent(
     x_train, y_train.flatten(), Q, 1000, 0.0001)
 end = time.time()
 print(end - start)
+
+# plot graph for cost_history
+x = [i for i in range(1, 1001)]
+plt.plot(x, cost_his)
+plt.show()
+
+# mean squared error (Gradient Descent): 4.541394198513894
+y_pred = x_test.dot(parameters)
+np.sqrt(mean_squared_error(y_pred, y_test))
+
+# Normal Equation
+# similar to Hands-on ML
+
+# Normal Equation Time: 55.354716062545776
+start = time.time()
+Q1 = np.linalg.inv(x_train.T.dot(x_train)).dot(x_train.T).dot(y_train)
+end = time.time()
+print(end - start)
+
+# mean squared error (Normal Equation): 4.482354426435835
+pred_y = x_test.dot(Q1)
+np.sqrt(mean_squared_error(pred_y, y_test))
