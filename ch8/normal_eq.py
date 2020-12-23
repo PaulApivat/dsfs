@@ -52,7 +52,7 @@ start = time.time()
 cost_his, parameters = gradient_descent(
     x_train, y_train.flatten(), Q, 1000, 0.0001)
 end = time.time()
-print(end - start)
+print("Gradient Descent Time", end - start)
 
 # plot graph for cost_history
 x = [i for i in range(1, 1001)]
@@ -70,7 +70,7 @@ np.sqrt(mean_squared_error(y_pred, y_test))
 start = time.time()
 Q1 = np.linalg.inv(x_train.T.dot(x_train)).dot(x_train.T).dot(y_train)
 end = time.time()
-print(end - start)
+print("Normal Equation Time", end - start)
 
 # mean squared error (Normal Equation): 4.482354426435835
 pred_y = x_test.dot(Q1)
