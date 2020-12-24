@@ -47,6 +47,7 @@ def derivative(x: float) -> float:
 xs = range(-10, 10)
 actuals = [derivative(x) for x in xs]
 estimates = [difference_quotient(square, x, h=0.001) for x in xs]
+
 # plot to show they're basically the same
 plt.title("Actual Derivatives vs. Estimates")
 plt.plot(xs, actuals, 'rx', label='Actual')   # red x
@@ -138,14 +139,15 @@ assert distance(v, [0, 0, 0]) < 0.001  # v should be close to 0
 
 # Using Gradient Descent to Fit Models
 
-# x ranges from -50 to 49, y is always 20 * x + 5
+# x ranges from -50 to 49,
+# y is always 20 * x + 5
 inputs = [(x, 20 * x + 5) for x in range(-50, 50)]
 
 # in this case we *know* the parameters of the linear relationship between x and y, but imagine we'd like to learn from the data.
 # we'll use gradient descent to find the slope and intercept that minimize the average squared error.
+
+
 # start with a function that determines the gradient based on the error from a single data point
-
-
 def linear_gradient(x: float, y: float, theta: Vector) -> Vector:
     slope, intercept = theta
     predicted = slope * x + intercept   # model prediction
@@ -191,10 +193,13 @@ assert vector_mean([[1, 2], [3, 4], [5, 6]]) == [3, 4]
 # (after import vector_sum and vector_mean)
 # Start with random values for slope and intercept
 
+# 1. start with a random value for theta
 theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
 
 learning_rate = 0.001
 
+# 2. compute the mean of the gradients
+# 3. adjust theta in that direction
 for epoch in range(5000):
     # compute the mean of the gradients
     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
