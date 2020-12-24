@@ -28,6 +28,7 @@ for itr in range(iterations):
     # find derivative of all (y_i - y_pred)**2
     for i in range(len(x)):
         y_pred = (b0 + b1*x[i])   # Predict the value for given x
+        print("y_pred", y_pred)
 
         # cal cost
         cal_cost = [(y[i] - x[i])**2 for i in range(len(x))]
