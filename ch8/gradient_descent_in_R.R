@@ -1,3 +1,6 @@
+# source: https://towardsdatascience.com/machine-learning-fundamentals-via-linear-regression-41a5d11f5220
+# Author: Conor McDonald
+
 library(dplyr)
 library(ggplot2)
 
