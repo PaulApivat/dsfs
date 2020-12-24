@@ -4,19 +4,22 @@ import numpy as np
 # np.array() prevents "can't multiply sequence by non-int of type 'float' "
 x = np.array([2, 4, 5])
 y = np.array([1.2, 2.8, 5.3])
-lr = 0.001   # Learning Rate
 b0 = 0
 b1 = 1
+print(f"Initialize \nbeta 0: {b0} and \nbeta 1: {b1}")
 
 # plot
 plt.scatter(x, y)
 # plt.show()
 
 # main function to calculate values of coefficients
-
+lr = 0.001   # Learning Rate
 iterations = 1000   # Number of iterations
-error = []
+print(f"Initialize learning rate: {lr} and number of iterations: {iterations}")
 
+print("start for-loop")
+error = []
+print(f"initialize variables which will hold the error: {error}")
 for itr in range(iterations):
     error_cost = 0
     cost_b0 = 0
@@ -46,8 +49,17 @@ for itr in range(iterations):
 
     error.append(error_cost)       # Append data to array
 
-print("coefficient 1, intercept (b0):", b0)
-print("coefficient 2, slope (b1):", b1)
+print("Make prediction using the line equation (y_pred):", y_pred)
+print("Calculate error and append to error array")
+
+print(
+    f"Calculate partial derivatives for... \nderivative 1: {partial_wrt_b0}, \nderivative 2: {partial_wrt_b1}")
+
+print(
+    f"increase cost of... \ncoefficient 1: {cost_b0}, \ncoefficient 2: {cost_b1}")
+print("update coefficient 1, intercept (beta 0):", b0)
+print("update coefficient 2, slope (beta 1):", b1)
+
 
 # Predict new values
 y_pred = b0 + b1 * x
@@ -56,10 +68,6 @@ y_pred = b0 + b1 * x
 print("x", x)
 print("y", y)
 print("cal_cost", cal_cost)
-print("partial_wrt_b0", partial_wrt_b0)
-print("partial_wrt_b1", partial_wrt_b1)
-print("add partial derviatives", partial_wrt_b0 + partial_wrt_b1)
-print("y_pred", y_pred)
 
 
 plt.scatter(x, y)
