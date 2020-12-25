@@ -1,26 +1,33 @@
 # coding: utf-8
 
-x = [2, 4, 5]
-y = [1.2, 2.8, 5.3]
-learning_rate = 0.001
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([2, 4, 5])
+y = np.array([1.2, 2.8, 5.3])
 b0 = 0
 b1 = 1
+lr = 0.001   # learn rate
 
-# Cost Function
-# cost = sum of squared residuals
-# cost = sum(y - y_pred) ** 2
-for i in x:
-    i * 1 + 0
-    print(i)
+# computing Normal Equation
+x_b = np.c_[np.ones((3, 1)), x]
+theta_best = np.linalg.inv(x_b.T.dot(x_b)).dot(x_b.T).dot(y)
 
-y_pred = [(i * 1 + 0) for i in x]
+# make predictions
+x_new = np.array([[-1], [5]])
+x_new_b = np.c_[np.ones((2, 1)), x_new]  # add x0 = 1 to each instance
+y_predict = x_new_b.dot(theta_best)
 
-difference = []
-zip_object = zip(y, y_pred)
+# plot model prediction
+plt.plot(x_new, y_predict, "r-")
+plt.plot(x, y, "b.")
+plt.axis([1.5, 5.5, 0.5, 5.5])
+#plt.axis([-1, 5.5, -1, 5.5])
+plt.show()
 
-# calculating cost
-for y_i, y_pred_i in zip_object:
-    difference.append((y_i - y_pred_i)**2)
-
-
-print(difference)
+print(x_b)
+print("theta_best", theta_best)
+print(x_new)
+print(x_new_b)
+print("y_predict", y_predict)

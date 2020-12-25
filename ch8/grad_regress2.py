@@ -6,7 +6,7 @@ x = np.array([2, 4, 5])
 y = np.array([1.2, 2.8, 5.3])
 b0 = 0
 b1 = 1
-print(f"Initialize \nbeta 0: {b0} and \nbeta 1: {b1}")
+print(f"Initialize \nbeta 0: {b0}, \nbeta 1: {b1}")
 
 # plot
 plt.scatter(x, y)
@@ -15,7 +15,7 @@ plt.scatter(x, y)
 # main function to calculate values of coefficients
 lr = 0.001   # Learning Rate
 iterations = 1000   # Number of iterations
-print(f"Initialize learning rate: {lr} and number of iterations: {iterations}")
+print(f"Initialize learning rate: {lr}, \nnumber of iterations: {iterations}")
 
 print("start for-loop")
 error = []
@@ -57,7 +57,7 @@ print(
     f"Calculate partial derivatives for... \nderivative 1: {partial_wrt_b0}, \nderivative 2: {partial_wrt_b1}")
 
 print(
-    f"increase cost of... \ncoefficient 1: {cost_b0}, \ncoefficient 2: {cost_b1}")
+    f"increase cost of... \ncost_b0: {cost_b0}, \ncost_b1: {cost_b1}")
 print("update coefficient 1, intercept (beta 0):", b0)
 print("update coefficient 2, slope (beta 1):", b1)
 
