@@ -4,6 +4,7 @@ import random
 import matplotlib.pyplot as plt
 from typing import Callable
 from typing import List
+import numpy as np
 
 Vector = List[float]
 
@@ -91,7 +92,7 @@ def sum_of_squares_gradient(v: Vector) -> Vector:
 
 # Using the Gradient
 # pick a random starting point
-v = [random.uniform(-10, 10) for i in range(3)]
+#v = [random.uniform(-10, 10) for i in range(3)]
 
 
 def subtract(v: Vector, w: Vector) -> Vector:
@@ -113,14 +114,18 @@ def distance(v: Vector, w: Vector) -> float:
     return magnitude(subtract(v, w))
 
 
-assert distance(v, [0, 0, 0]) < 0.001  # v should be close to 0
+# assert distance(v, [0, 0, 0]) < 0.001  # v should be close to 0
 
 # Using Gradient Descent to Fit Models
 
-# x ranges from -50 to 49,
+# x ranges from 2 to 6,
 # y is always 20 * x + 5
 
-inputs
+#x = np.array([2, 4, 5])
+#y = np.array([45, 85, 105])
+
+
+#inputs = [(x, y) for x in range(2, 6)]
 
 # in this case we *know* the parameters of the linear relationship between x and y, but imagine we'd like to learn from the data.
 # we'll use gradient descent to find the slope and intercept that minimize the average squared error.
@@ -172,6 +177,20 @@ assert vector_mean([[1, 2], [3, 4], [5, 6]]) == [3, 4]
 # (after import vector_sum and vector_mean)
 # Start with random values for slope and intercept
 
+# ---- Using Gradient Descent to Fit Models ---- #
+
+# x ranges from 2 to 6,
+# y is always 20 * x + 5
+
+x = np.array([2, 4, 5])
+# y = np.array([45, 85, 105])   # instead of putting y directly, put in 20 * x + 5
+
+#x = [2, 4, 5]
+#y = [45, 85, 105]
+
+inputs = [(x, 20 * x + 5) for x in range(2, 6)]
+
+
 # 1. start with a random value for theta
 theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
 
@@ -179,7 +198,8 @@ learning_rate = 0.001
 
 # 2. compute the mean of the gradients
 # 3. adjust theta in that direction
-for epoch in range(5000):
+
+for epoch in range(100):     # start with 100
     # compute the mean of the gradients
     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
     # take a step in that direction
@@ -188,5 +208,7 @@ for epoch in range(5000):
 
 slope, intercept = theta
 
-assert 19.9 < slope < 20.1,  "slope should be about 20"
-assert 4.9 < intercept < 5.1, "intercept should be about 5"
+#assert 19.9 < slope < 20.1,  "slope should be about 20"
+#assert 4.9 < intercept < 5.1, "intercept should be about 5"
+print("slope", slope)
+print("intercept", intercept)
