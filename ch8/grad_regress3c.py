@@ -204,7 +204,7 @@ for epoch in range(100):     # start with 100
     grad = vector_mean([linear_gradient(x, y, theta) for x, y in inputs])
     # take a step in that direction
     theta = gradient_step(theta, grad, -learning_rate)
-    print(epoch, theta)
+    print(epoch, grad, theta)
 
 slope, intercept = theta
 

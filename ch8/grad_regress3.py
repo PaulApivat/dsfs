@@ -10,7 +10,7 @@ b1 = 1
 lr = 0.001   # learn rate
 
 # computing Normal Equation
-x_b = np.c_[np.ones((3, 1)), x]
+x_b = np.c_[np.ones((3, 1)), x]    # add x0 = 1 to each instance
 theta_best = np.linalg.inv(x_b.T.dot(x_b)).dot(x_b.T).dot(y)
 
 # make predictions
