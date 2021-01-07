@@ -1,7 +1,12 @@
-###### TWITTER API ######
-import os
-import webbrowser
+# for python-dotenv method of access environment variables
 from twython import Twython
+import webbrowser
+import os
+import dotenv
+from dotenv import load_dotenv
+load_dotenv()
+
+###### TWITTER API ######
 
 # IMPORTANT: PLUG YOUR KEY AND SECRET IN DIRECTLY (without os.environ.get())
 CONSUMER_KEY = os.environ.get("TWITTER_CONSUMER_KEY")         # API Key
