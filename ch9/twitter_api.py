@@ -1,5 +1,7 @@
 # for python-dotenv method of access environment variables
 from twython import Twython
+from twython import TwythonStreamer
+from collections import Counter
 import webbrowser
 import os
 import dotenv
