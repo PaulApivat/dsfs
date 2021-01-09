@@ -10,6 +10,8 @@ load_dotenv()
 
 ###### TWITTER API ######
 
+print("Start Twitter API...")
+
 # IMPORTANT: PLUG YOUR KEY AND SECRET IN DIRECTLY (without os.environ.get())
 CONSUMER_KEY = os.environ.get("TWITTER_CONSUMER_KEY")         # API Key
 CONSUMER_SECRET = os.environ.get("TWITTER_CONSUMER_SECRET")   # API Secret Key
@@ -102,3 +104,18 @@ top_hashtags = Counter(hashtag['text'].lower()
 print(top_hashtags.most_common(5))
 
 # NOTE: in a real project you wouldn't use an in-memory list, but rather a data base to store tweets permanently
+
+
+# Store top 20 mentions using twython endpoints get_mentions_timeline()
+
+# create empty list
+mentions = list()
+
+mentions = twitter.get_mentions_timeline()
+
+# loop through to grab text
+for dct in mentions:
+    for k,v in dct.items():
+        if k == 'text':
+            print(v)
+
