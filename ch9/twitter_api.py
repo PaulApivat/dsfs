@@ -175,3 +175,35 @@ print(counts)
 
 # sort dictionary by values
 dict(sorted(counts.items(), key=lambda item: item[1]))
+
+
+# Show Owned Lists
+"""Returns the lists owned by the specified Twitter user.
+        Docs:
+        https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-reference/get-lists-ownerships
+"""
+
+owned_lst = list()
+owned_lst = twitter.show_owned_lists()
+len(owned_lst) # 5
+
+type(owned_lst) # actually a dict, not a list
+
+# to loop through, isolate the list within owned_lst dict
+type(owned_lst['lists']) # this is a list
+
+# store the names of all my twitter lists in list_name
+list_name = []
+
+for dct in owned_lst['lists']:
+    for k,v in dct.items():
+        if k == 'name':
+            list_name.append(v)
+
+print(list_name)  # ['Sports', 'R + Python', 'Thailand', 'Business', 'News', 'Content Marketing', 'Sports']
+
+# Can get specific list
+
+
+# example: Sports
+twitter.get_specific_list(list_id=71923019)
