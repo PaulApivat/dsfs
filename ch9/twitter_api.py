@@ -119,3 +119,15 @@ for dct in mentions:
         if k == 'text':
             print(v)
 
+# Collection of 19 Recent Tweets/Retweets by me and my followers; get_home_timeline()
+home_timeline = list()
+
+# Find names of people I follow who are recently on my home_timeline
+for dct in home_timeline:
+    for k,v in dct.items():
+        if k == 'user':
+            for k_i, v_i in v.items():
+                if k_i == 'name':
+                    print(v_i)
+
+
