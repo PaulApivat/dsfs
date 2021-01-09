@@ -107,6 +107,8 @@ print(top_hashtags.most_common(5))
 
 
 # Store top 20 mentions using twython endpoints get_mentions_timeline()
+"""Returns the 20 most recent mentions (tweets containing a users's
+        @screen_name) for the authenticating user."""
 
 # create empty list
 mentions = list()
@@ -118,6 +120,16 @@ for dct in mentions:
     for k,v in dct.items():
         if k == 'text':
             print(v)
+
+# Loop through 'user' dictionary which is nested to print out screen_name of my most recent mentions
+for dct in mentions:
+    for k,v in dct.items():
+        if k == 'user':
+            for k_i, v_i in v.items():
+                if k_i == 'screen_name':
+                    print(v_i)
+
+
 
 # Collection of 19 Recent Tweets/Retweets by me and my followers; get_home_timeline()
 home_timeline = list()
@@ -131,3 +143,35 @@ for dct in home_timeline:
                     print(v_i)
 
 
+# Returns most recent tweet authored by the authenticating user that have been retweeted by others
+
+retweets = list()
+retweets = twitter.retweeted_of_me()
+len(retweets)  # 20
+
+
+# Get available trends
+"""Returns the locations that Twitter has trending topic information for."""
+
+avail_trends = twitter.get_available_trends()
+len(avail_trends) # 467
+
+
+
+names = list()
+# append country names to names list
+for dct in avail_trends:
+    for k,v in dct.items():
+        if k == 'country':
+            names.append(v)
+
+counts = dict()
+# create counts of countries
+# key = countries
+# value = number of times they're in avail_trends
+for name in names:
+    counts[name] = counts.get(name, 0) + 1
+print(counts)
+
+# sort dictionary by values
+dict(sorted(counts.items(), key=lambda item: item[1]))
